@@ -1,0 +1,45 @@
+﻿@model xxx课程教学网站.Models.Notice
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Teacher/Views/Shared/Teacher_Layout.cshtml";
+}
+
+<h2>发布新通知</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Headline, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Headline, new { htmlAttributes = new { @class = "form-control", @style = "width:50%;" } })
+                @Html.ValidationMessageFor(model => model.Headline, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.N_Content, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextArea("N_Content", new { @class = "form-control", @style = "width:50%;height:300px;" })
+                @Html.ValidationMessageFor(model => model.N_Content, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="发布" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("返回问题列表", "Index")
+</div>

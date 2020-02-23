@@ -1,0 +1,58 @@
+﻿@model IEnumerable<xxx课程教学网站.Models.T_Question>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Student/Views/Shared/Student_Layout.cshtml";
+}
+
+
+
+
+<div class="text-right" style="margin-right:80px;">
+    @Html.ActionLink("发起新问题", "Create", "", new { @class = "btn btn-link", @style = "font-size:17px;width: 150px;margin-left:80px; margin-bottom:50px;" })
+    @Html.ActionLink("查看我的问题", "MyQuestion", "", new { @class = "btn btn-link", @style = "font-size:17px;width: 150px;margin-left:80px; margin-bottom:50px;" })
+</div>
+
+
+
+
+
+
+
+
+@foreach (var item in Model)
+{
+
+    <div class="row">
+        <div class="panel panel-default col-md-10 col-md-offset-1">
+            <div class="panel-heading">
+                <h1 class="panel-title" style="height:25px;text-align:center;font-size: 20px;"> @Html.DisplayFor(modelItem => item.Headline)</h1>
+            </div>
+            <div class="panel-body">
+                <div class="quesdl">
+                    <div class="quesdt" id="questd1" style="font-size: 17px;font-weight: 500;">
+                        @Html.DisplayFor(modelItem => item.Q_Content)
+                    </div>
+                    <div>
+                        <div style="width:50%;padding:0;margin:0;float:right;text-align: right">
+                            <a id="quesPeople" class="btn btn-default disabled" role="button" style="font-size:17px;width: 300px;">
+                                提问者： @Html.DisplayFor(modelItem => item.Uploader);
+                                <p> @Html.DisplayFor(modelItem => item.Up_Time)</p>
+                            </a>
+                            <div style="width:50%;padding:0;margin:0; float:right" class="text-right">
+                                <form action="@Url.Action("Index", "Answer")" method="post">
+                                    <input type="text" value="@item.id" name="Q_id" style="visibility:hidden" />
+                                    <input type="submit" value="查看回答" class="btn btn-primary" role="button" style="font-size:17px;width: 150px" />
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+

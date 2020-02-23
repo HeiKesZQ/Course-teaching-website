@@ -1,0 +1,95 @@
+﻿@model IEnumerable<xxx课程教学网站.Models.T_CourseResource>
+
+@{
+    ViewBag.Title = "Video";
+    Layout = "~/Areas/Student/Views/Shared/Student_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("Search", "Check", FormMethod.Post))
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <label>章节</label>
+                <input type="text" name="chapter" />
+            </div>
+
+            <div class="col-md-3">
+                <input type="submit" value="查询" class="btn btn-primary" />
+            </div>
+
+        </div>
+
+    </div>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.chapter)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.file_addr)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.file_type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.file_size)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.add_time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.uploader)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.chapter)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.file_addr)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.file_type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.file_size)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.add_time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.uploader)
+            </td>
+            <td>
+
+
+                
+                    <form action="@Url.Action("Player", "Check", new { videoname = item.file_addr})" method="post" style="display:inline;">
+                        <input type="text" value="@item.file_addr" name="file_name" style="display:none" />
+                        <input type="submit" value="播放" class="btn btn-primary text-center" />
+                    </form>
+
+              
+               
+                
+                    <form action="@Url.Action("DownFile", "Check")" method="post" style="display:inline;margin-right:50px;">
+                        <input type="text" value="@item.file_addr" name="file_name" style="display:none" />
+                        <input type="submit" value="下载" class="btn btn-primary text-center" />
+                    </form>
+               
+                
+
+
+            </td>
+
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Upload";
+    Layout = "~/Areas/Teacher/Views/Shared/Teacher_Layout.cshtml";
+}
+
+<h2>Upload</h2>
+
+<form action='@Url.Action("Upload", "File")' method="post" enctype="multipart/form-data">
+    <input type="file" name="file" /><br />
+    <input type="submit" value="提交" />
+</form>
+
+@using (Html.BeginForm("DownFile", "File", FormMethod.Post))
+{
+
+    <input type="text" name="id" />
+   
+    <input type="submit" value="下载"/>
+
+}
+
+

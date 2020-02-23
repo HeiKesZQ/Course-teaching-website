@@ -1,0 +1,58 @@
+﻿@model xxx课程教学网站.Models.T_CourseResource
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Teacher/Views/Shared/Teacher_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+<form action="@Url.Action("Edit", "CourseResource")" enctype="multipart/form-data" method="post">
+
+    
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>T_CourseResource</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.chapter, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.chapter, new { htmlAttributes = new { @class = "form-control", style="max-width:280px;" } })
+                @Html.ValidationMessageFor(model => model.chapter, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.file_addr, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+              
+                    <input type="text" id="textfield" class="txt" style="vertical-align:top" />
+                    <a class="file">
+                        <span>浏览</span>
+                        <input type="file" id="file_addr" name="file_addr" onchange="document.getElementById('textfield').value=this.files[0].name" />
+                    </a>
+
+               
+
+            </div>
+        </div>
+
+     
+      
+       
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="保存" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+    </form>
+
+    <div>
+        @Html.ActionLink("返回列表", "Create", new {file_type= @Session["file_type"] })
+    </div>

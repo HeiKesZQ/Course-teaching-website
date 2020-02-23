@@ -1,0 +1,35 @@
+﻿@model xxx课程教学网站.Models.T_Teacher
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/Admin_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>T_Teacher</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.t_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.t_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.psw)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.psw)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.work_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

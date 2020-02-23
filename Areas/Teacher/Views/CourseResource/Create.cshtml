@@ -1,0 +1,141 @@
+﻿@model IEnumerable<xxx课程教学网站.Models.T_CourseResource>
+
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Teacher/Views/Shared/Teacher_Layout.cshtml";
+}
+
+<h2>@Session["file_type"] 上传</h2>
+
+<form action="@Url.Action("Create", "CourseResource")" enctype="multipart/form-data" method="post">
+
+
+
+    <div class="form-horizontal">
+        <h4>@ViewBag.file_type</h4>
+        <hr />
+        <div class="form-group">
+            <label class="control-label col-md-2">章节：</label>
+            <div class="col-md-10">
+                <input type="text" name="chapter" class="form-control" style="max-width:280px;" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">文件名：</label>
+            <div class="col-md-10">
+                <input type="text" id="textfield" class="txt" style="vertical-align:top" />
+                <a class="file">
+                    <span>浏览</span>
+                    <input type="file" id="file_addr" name="file_addr" onchange="document.getElementById('textfield').value=this.files[0].name" />
+                </a>
+
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="上传" class="btn btn-primary" />
+
+            </div>
+        </div>
+        <div class="form-group" style="visibility:hidden">
+            <label class="control-label col-md-2">文件类型：</label>
+            <div class="col-md-10">
+                <input type="text" id="file_type" name="file_type" value="@Session["file_type"]" />
+
+            </div>
+        </div>
+    </div>
+</form>
+
+@using (Html.BeginForm("Search", "CourseResource", FormMethod.Get))
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <label>章节:</label>
+                <input type="text" name="chapter" />
+            </div>
+           
+           <input type="text" id="file_type" name="file_type" value="@Session["file_type"]" style="visibility:hidden"  />
+
+          
+
+            <div class="col-md-3">
+                <input type="submit" value="查询"  class="btn btn-primary"/>
+            </div>
+
+        </div>
+
+    </div>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.chapter)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.file_addr)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.file_type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.file_size)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.add_time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.uploader)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.chapter)
+        </td>
+        <td>
+
+            @Html.DisplayFor(modelItem => item.file_addr)
+
+
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.file_type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.file_size)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.add_time)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.uploader)
+        </td>
+     
+        <td>
+            @Html.ActionLink("修改", "Edit", new { id = item.id }, new { @class = "btn btn-primary" }) |
+            @Html.ActionLink("详情", "Details", new { id = item.id }, new { @class = "btn btn-primary" } ) |
+            @Html.ActionLink("删除", "Delete", new { id = item.id }, new { @class = "btn btn-primary" })
+        </td>
+       
+
+    </tr>
+    }
+
+</table>
+
+
+
+
+<div>
+    @Html.ActionLink("返回总列表", "Index")
+</div>

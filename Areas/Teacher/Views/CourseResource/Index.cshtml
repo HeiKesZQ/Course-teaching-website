@@ -1,0 +1,81 @@
+﻿@model IEnumerable<xxx课程教学网站.Models.T_CourseResource>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Teacher/Views/Shared/Teacher_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("Index", "CourseResource", FormMethod.Post))
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <label>章节</label>
+                <input type="text" name="chapter" />
+            </div>
+            <div class="col-md-4">
+                <label>资源类型</label>
+                <input type="text" name="file_type" />
+            </div>
+            <div class="col-md-4">
+                <input type="submit" value="查询" class = "btn btn-primary"/>
+            </div>
+
+        </div>
+
+    </div>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.chapter)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.file_addr)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.file_type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.file_size)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.uploader)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.add_time)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.chapter)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.file_addr)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.file_type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.file_size)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.uploader)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.add_time)
+        </td>
+        <td>
+            @Html.ActionLink("编辑", "Edit", new { id = item.id }, new { @class = "btn btn-primary" }) |
+            @Html.ActionLink("详情", "Details", new { id = item.id }, new { @class = "btn btn-primary" }) |
+            @Html.ActionLink("删除", "Delete", new { id = item.id }, new { @class = "btn btn-primary" })
+        </td>
+    </tr>
+    }
+
+</table>

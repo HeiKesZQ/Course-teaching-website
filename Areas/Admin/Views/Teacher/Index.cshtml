@@ -1,0 +1,68 @@
+﻿@model IEnumerable<xxx课程教学网站.Models.T_Teacher>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/Admin_Layout.cshtml";
+}
+
+<h2>教师管理</h2>
+
+<p>
+    @Html.ActionLink("点击添加单个教师", "Create","", new { @class = "btn btn-primary" })
+</p>
+
+@using (Html.BeginForm("Index", "Teacher", FormMethod.Post))
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <label>工号</label>
+                <input type="text" name="work_id" />
+            </div>
+            <div class="col-md-4">
+                <label>姓名</label>
+                <input type="text" name="t_name" />
+            </div>
+            <div class="col-md-4">
+                <input type="submit" value="查询" class="btn btn-primary"/>
+            </div>
+
+        </div>
+
+    </div>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.work_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.t_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.psw)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.work_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.t_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.psw)
+            </td>
+            <td>
+                @Html.ActionLink("修改", "Edit", new { id = item.work_id }, new { @class="btn btn-primary"}) |
+                @Html.ActionLink("删除", "Delete", new { id = item.work_id }, new { @class = "btn btn-primary" })
+            </td>
+        </tr>
+    }
+
+</table>

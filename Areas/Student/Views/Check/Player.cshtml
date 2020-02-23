@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Areas/Student/Views/Shared/Student_Layout.cshtml";
+
+}
+
+<h2>@ViewBag.videoname</h2>
+<video src="~/Uploads/course_resource/video/@ViewBag.videoname" controls="controls" style="width: 100%; height:100%; object-fit: fill">
+    your browser does not support the video tag
+</video>
+

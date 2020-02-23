@@ -1,0 +1,77 @@
+﻿@model xxx课程教学网站.Models.T_Question
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Student/Views/Shared/Student_Layout.cshtml";
+}
+
+<h2>发起新问题</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Headline, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Headline, new { htmlAttributes = new { @class = "form-control", @style = "width:50%;" } })
+                @Html.ValidationMessageFor(model => model.Headline, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Q_Content, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextArea("Q_Content", new { @class = "form-control", @style = "width:50%;height:300px;" } )
+                @Html.ValidationMessageFor(model => model.Q_Content, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+       
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <!--<input type="submit" value="发布" class="btn btn-primary" />-->
+                <!-- 按钮触发模态框 -->
+                <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" type="submit">
+                    发布
+                </button>
+                <!-- 模态框（Modal） -->
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    &times;
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">
+                                    模态框（Modal）标题
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                在这里添加一些文本
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                    关闭
+                                </button>
+                                <button type="button" class="btn btn-primary">
+                                    提交更改
+                                </button>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal -->
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+}
+
+<div>
+    @Html.ActionLink("返回问题列表", "Index")
+</div>

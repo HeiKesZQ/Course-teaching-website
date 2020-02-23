@@ -1,0 +1,45 @@
+﻿@model IEnumerable<xxx课程教学网站.Models.T_Notice>
+
+@{
+    ViewBag.Title = "MyNotice";
+    Layout = "~/Areas/Teacher/Views/Shared/Teacher_Layout.cshtml";
+}
+<div style="margin-left:80px;">
+    @Html.ActionLink("返回通知列表", "Index", "", new { @class = " glyphicon glyphicon-menu-left text-left", @style = "font-size:17px;width: 150px; margin-bottom:50px;" })
+
+    <h2>我发布的通知:</h2>
+
+</div>
+
+@foreach (var item in Model)
+{
+
+    <div class="row">
+        <div class="panel panel-default col-md-10 col-md-offset-1">
+            <div class="panel-heading">
+                <h1 class="panel-title" style="height:25px;text-align:center;font-size: 20px;"> @Html.DisplayFor(modelItem => item.Headline)</h1>
+            </div>
+            <div class="panel-body">
+                <div class="quesdl">
+                    <div class="quesdt" id="questd1" style="font-size: 17px;font-weight: 500;">
+                        @Html.DisplayFor(modelItem => item.N_Content)
+                    </div>
+                    <div>
+
+
+                        <div style="width:50%;padding:0;margin:0;float:right;text-align: center">
+                            <a id="quesPeople" class="btn disabled " role="button" style="font-size:17px;width: 300px;">发布者： @Html.DisplayFor(modelItem => item.Uploader);</a>
+                            <p> <span>  @Html.DisplayFor(modelItem => item.Up_Time)</span></p>
+                            <form action="@Url.Action("Delete", "Notice", new { item.id})" method="get" style="display:inline;" class="text-right">
+                                <input type="text" value="@item.id" name="id" style="display:none" />
+                                <input type="submit" value="删除通知" class="btn btn-primary text-center" />
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}

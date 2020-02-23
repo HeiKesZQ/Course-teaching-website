@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<!-- saved from url=(0043)# -->
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="~/Imgs/bilibili.png">
+
+    <title>管理员端</title>
+
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <style>
+        input{
+
+        max-width:280px;
+        }
+    </style>
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- Custom styles for this template -->
+    <link href="~/Content/dashboard.css" rel="stylesheet">
+    <link href="~/Content/Site.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">管理员后台</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li><a href="@Url.Action("AdminLogin", "Home", new {  area=""})"><span class="glyphicon glyphicon-home" style="margin-right:10px;"> </span>注销登录</a></li>
+
+
+                </ul>
+
+            </div>
+
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 col-md-2 sidebar">
+                <ul class="nav nav-sidebar">
+
+                    <li>@Html.ActionLink("首页信息", "Index", "Course", new { area = "Admin" }, null)</li>
+                    <li>@Html.ActionLink("教师用户", "Index", "Teacher", new { area = "Admin" }, null)</li>
+                    <li>@Html.ActionLink("排课管理", "Index", "ArrangeCourse", new { area = "Admin" }, null)</li>
+                   
+
+
+                </ul>
+
+            </div>
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    <script>
+        $(".sidebar a").each(function () {
+            if (location.href == this.href ) {
+                console.log(this.href);
+                $(this).parent().addClass('active')
+            }
+        })
+    </script>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <script src="~/Scripts/holder.min.js"></script>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

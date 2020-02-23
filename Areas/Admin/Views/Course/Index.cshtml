@@ -1,0 +1,58 @@
+﻿@model IEnumerable<xxx课程教学网站.Models.T_Course>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/Admin_Layout.cshtml";
+}
+
+<h2>课程信息</h2>
+
+<p>
+    @Html.ActionLink("点击添加课程信息", "Create", "", new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.c_outlineaddr)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.c_characteristic)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.c_team)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.c_book)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.c_name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.c_outlineaddr)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.c_characteristic)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.c_team)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.c_book)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.c_name)
+        </td>
+        <td>
+            @Html.ActionLink("修改", "Edit", new { id=item.c_id }, new { @class = "btn btn-primary" }) |
+            @Html.ActionLink("详情", "Details", new { id=item.c_id }, new { @class = "btn btn-primary" }) |
+            @Html.ActionLink("删除", "Delete", new { id=item.c_id }, new { @class = "btn btn-primary" })
+        </td>
+    </tr>
+}
+
+</table>

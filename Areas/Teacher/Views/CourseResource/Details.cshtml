@@ -1,0 +1,59 @@
+﻿@model xxx课程教学网站.Models.T_CourseResource
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Teacher/Views/Shared/Teacher_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>T_CourseResource</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.chapter)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.chapter)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.file_addr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.file_addr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.file_type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.file_type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.file_size)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.file_size)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.add_time)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.add_time)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("返回列表", "Create", new { file_type = @Session["file_type"] })
+</p>
